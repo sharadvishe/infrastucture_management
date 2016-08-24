@@ -1,0 +1,11 @@
+---
+# Include variables and define needed variables.
+- name: Include OS-specific variables.
+  include_vars: "{{ ansible_distribution }}.yml"
+
+# Process OS Specific Setup
+- include: setup-Debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: Ensure mongodb is started and set to run on startup.
+  service: name=mongod state=started enabled=yes

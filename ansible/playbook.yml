@@ -1,0 +1,8 @@
+
+- name: configuration on vagrant box
+  hosts: vagrant
+  become: yes
+  roles:
+    - nodejs
+    - nginx
+    - mongodb    
